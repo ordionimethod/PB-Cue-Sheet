@@ -249,7 +249,7 @@ export default function LogTab({ session, editorName, onSaved, editingEntry, onC
               <label>Production title / featured talent</label>
               <input
                 type="text"
-                placeholder="e.g. Taylor Hale - Why I'm Doing Playboy"
+                placeholder=""
                 value={p.production}
                 onChange={(e) => updateProject(p.id, { production: e.target.value })}
               />
@@ -288,14 +288,14 @@ export default function LogTab({ session, editorName, onSaved, editingEntry, onC
               <label>Content link</label>
               <input
                 type="url"
-                placeholder="https://instagram.com/p/…"
+                placeholder=""
                 value={p.link}
                 onChange={(e) => updateProject(p.id, { link: e.target.value })}
               />
             </div>
             <div className="field">
               <label>Content duration</label>
-              <input type="text" placeholder="0:24" value={p.duration} onChange={(e) => updateProject(p.id, { duration: e.target.value })} />
+              <input type="text" placeholder="" value={p.duration} onChange={(e) => updateProject(p.id, { duration: e.target.value })} />
             </div>
           </div>
 
@@ -327,7 +327,7 @@ export default function LogTab({ session, editorName, onSaved, editingEntry, onC
                     <label>Song / track name / number</label>
                     <input
                       type="text"
-                      placeholder="e.g. XEL012_16_Slush Puppy"
+                      placeholder=""
                       value={t.track}
                       onChange={(e) => updateTrack(p.id, t.id, { track: e.target.value })}
                     />
@@ -363,7 +363,7 @@ export default function LogTab({ session, editorName, onSaved, editingEntry, onC
                     <label>Composer(s)</label>
                     <textarea
                       rows={2}
-                      placeholder="Name / PRO - %, Name / PRO - %"
+                      placeholder=""
                       value={t.composers}
                       onChange={(e) => updateTrack(p.id, t.id, { composers: e.target.value })}
                     />
@@ -372,7 +372,7 @@ export default function LogTab({ session, editorName, onSaved, editingEntry, onC
                     <label>Publisher(s)</label>
                     <textarea
                       rows={2}
-                      placeholder="Publisher name"
+                      placeholder=""
                       value={t.publishers}
                       onChange={(e) => updateTrack(p.id, t.id, { publishers: e.target.value })}
                     />
