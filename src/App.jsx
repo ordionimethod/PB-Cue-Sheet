@@ -5,6 +5,7 @@ import NamePrompt from './components/NamePrompt.jsx';
 import LogTab from './components/LogTab.jsx';
 import TrackerTab from './components/TrackerTab.jsx';
 import Toast from './components/Toast.jsx';
+import logo from './assets/playboy-logo.png';
 
 export default function App() {
   const [session, setSession] = useState(undefined); // undefined = still checking, null = signed out
@@ -141,6 +142,7 @@ export default function App() {
     <div className="wrap">
       <div className="headbar">
         <div className="headbar-left">
+          <img src={logo} alt="Playboy" className="headbar-logo" />
           <div className="headbar-text"><h1>Cue Sheet Tracker</h1></div>
         </div>
         <div className="headbar-user">
