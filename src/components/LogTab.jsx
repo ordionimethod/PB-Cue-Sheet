@@ -145,13 +145,15 @@ export default function LogTab({ session, editorName, onSaved, editingEntry, onC
 
   async function fillTrackFromFile(pid, tid, file) {
     updateTrack(pid, tid, { uploadStatus: 'reading' });
+    // The filename (catalog code and all — e.g. "XCD666_02_2_STARS_AWAY_FROM_HEAVEN_INSTRUMENTAL")
+    // is what goes in Track, not the file's cleaned-up embedded title tag — that
+    // strips exactly the numbers/codes that matter for identifying the track later.
     const filenameGuess = file.name.replace(/\.[^/.]+$/, '');
     updateTrack(pid, tid, { track: filenameGuess });
     try {
       const buf = await file.arrayBuffer();
       const frames = readAudioTags(buf);
       const patch = {};
-      if (frames.TIT2) patch.track = frames.TIT2;
       if (frames.TCOM) patch.composers = frames.TCOM;
       const { publisher, pro } = extractPublisherAndPro(frames);
       if (publisher) patch.publishers = publisher;
