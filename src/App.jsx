@@ -109,16 +109,6 @@ export default function App() {
     fetchEntries();
   }
 
-  async function handleAddLink(id, link) {
-    const { error } = await supabase.from('cue_entries').update({ link }).eq('id', id);
-    if (error) {
-      showToast(error.message.includes('policy') ? "You can only edit your own entries (or ask an admin to)." : error.message, true);
-      return;
-    }
-    showToast('Link saved ✓');
-    fetchEntries();
-  }
-
   function startEdit(entry) {
     setEditingEntry(entry);
     setTab('log');
@@ -167,7 +157,7 @@ export default function App() {
           showToast={showToast}
         />
       ) : (
-        <TrackerTab entries={entries} onEdit={startEdit} onDelete={handleDelete} onAddLink={handleAddLink} />
+        <TrackerTab entries={entries} onEdit={startEdit} onDelete={handleDelete} />
       )}
 
       <Toast message={toast.message} isError={toast.isError} visible={toast.visible} />
