@@ -20,7 +20,7 @@ function esc(s) {
   return s == null ? '' : String(s);
 }
 
-export default function TrackerTab({ entries, onEdit, onDelete, onAddLink }) {
+export default function TrackerTab({ entries, onEdit, onDelete }) {
   const [search, setSearch] = useState('');
   const [editorFilter, setEditorFilter] = useState('');
   const [missingLinkOnly, setMissingLinkOnly] = useState(false);
@@ -76,12 +76,6 @@ export default function TrackerTab({ entries, onEdit, onDelete, onAddLink }) {
   async function handleDelete(id) {
     if (!window.confirm("Delete this entry? This can't be undone.")) return;
     await onDelete(id);
-  }
-
-  async function handleAddLink(entry) {
-    const link = window.prompt(`Content link for "${entry.track}":`, '');
-    if (link === null || !link.trim()) return;
-    await onAddLink(entry.id, link.trim());
   }
 
   return (
@@ -153,7 +147,6 @@ export default function TrackerTab({ entries, onEdit, onDelete, onAddLink }) {
                 <td data-label="Shares">{esc(e.shares)}</td>
                 <td>
                   <div className="row-actions">
-                    {!e.link && <button className="ghost" onClick={() => handleAddLink(e)}>Add link</button>}
                     <button className="ghost" onClick={() => onEdit(e)}>Edit</button>
                     <button className="ghost" onClick={() => handleDelete(e.id)}>Delete</button>
                   </div>
